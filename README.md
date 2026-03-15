@@ -24,4 +24,4 @@ The dashboard explores patterns in experience level, city development, company s
 - Driver analysis (Top & Second driver detection)
 
 ## Dataset
-Source: Kaggle HR Analytics Job Change Dataset (Dataset/aug_train.csv)
+Source: Kaggle HR Analytics Job Change Dataset (https://github.com/mrprabhatkumar9-DA/HR-Job-Change-Analytics/tree/main/Dataset)
