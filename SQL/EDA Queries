@@ -1,0 +1,127 @@
+-- Exploratory Data Analysis (EDA) - Aug_Train_Dataset
+-- Total count of Job_change Vs No_change'
+select * from aug_train_data;
+select target, count(*) as Total_count,
+round(count(*)/(select count(*) from aug_train_data)*100,2)  as Job_change_per
+from aug_train_data
+group by target;
+
+-- Top_10 Cities Vs Job_change
+Select City, 
+count(*) as Total_candidates,
+sum(target) as Job_change,
+round(avg(target)*100,2) as Job_change_rate
+from aug_train_data
+group by city
+order by round(avg(target)*100,2) desc;
+
+-- Experience vs Job_change
+select experience, 
+count(*) as Total_candidates,
+sum(target) as Job_change,
+round(avg(target)*100,2) as Job_change_rate
+from aug_train_data
+group by experience
+order by experience;
+
+-- Experience Group vs Job Change Rate
+SELECT 
+experience_group,
+COUNT(*) total_candidates,
+SUM(target) job_change,
+ROUND(AVG(target)*100,2) job_change_rate
+FROM aug_train_data
+GROUP BY experience_group
+ORDER BY job_change_rate DESC;
+
+
+-- Job Change Rate by Education
+SELECT 
+education_level,
+COUNT(*) AS total_candidates,
+SUM(target) AS job_change,
+ROUND(AVG(target)*100,2) AS job_change_rate
+FROM aug_train_data
+GROUP BY education_level
+ORDER BY job_change_rate DESC;
+
+-- Gender Vs Job_change rate
+Select Gender,
+count(*) as Total_candidates,
+sum(target) as Job_change,
+round(avg(target)*100,2)
+from aug_train_data
+group by Gender;
+
+-- Relevant Experience vs Job Change Rate
+SELECT 
+relevent_experience,
+COUNT(*) total_candidates,
+SUM(target) job_change,
+ROUND(AVG(target)*100,2) job_change_rate
+FROM aug_train_data
+GROUP BY relevent_experience;
+
+-- Enrolled_person Vs Job_Change Rate
+Select enrolled_university, 
+count(*) as Total_candidates,
+sum(target) as Job_change,
+round(avg(target)*100,2) as Job_change_rate
+from aug_train_data
+group by enrolled_university;
+
+
+-- Major_discipline Vs Job_change Rate
+select major_discipline, 
+count(*) as Total_candidates,
+sum(target) as Job_change,
+round(avg(target)*100,2) as Job_change_rate
+from aug_train_data
+group by major_discipline;
+
+-- Company_size Vs Job_change RATE
+SELECT 
+company_size,
+COUNT(*) total_candidates,
+SUM(target) job_change,
+ROUND(AVG(target)*100,2) job_change_rate
+FROM aug_train_data
+GROUP BY company_size
+ORDER BY job_change_rate DESC;
+
+-- Company_type Vs Job_change
+Select Company_type, 
+count(*) as Total_candidates,
+sum(target) Job_change,
+round(avg(target)*100,2) as Job_change_rate
+from aug_train_data
+group by company_type
+order by round(avg(target)*100,2) desc;
+
+-- last_new_job Vs Job_change
+Select last_new_job, count(*) as Total_candidates,
+sum(target) as Job_change,
+round(avg(target)*100,2) as Job_change_rate
+from aug_train_data
+group by last_new_job
+order by last_new_job;
+
+-- Training Hours vs Job Change Behaviour
+SELECT 
+training_hours_level,
+COUNT(*) total_candidates,
+SUM(target) job_change,
+ROUND(AVG(target)*100,2) job_change_rate
+FROM aug_train_data
+GROUP BY training_hours_level
+ORDER BY job_change_rate DESC;
+
+-- City Development vs Job Change
+SELECT 
+city_development_level,
+COUNT(*) total_candidates,
+SUM(target) job_change,
+ROUND(AVG(target)*100,2) job_change_rate
+FROM aug_train_data
+GROUP BY city_development_level
+ORDER BY job_change_rate DESC;
