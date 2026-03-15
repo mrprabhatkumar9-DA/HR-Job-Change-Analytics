@@ -1,0 +1,117 @@
+-- Data cleaning
+-- aug_train_data
+-- For experience Column
+select * from aug_train_data;
+select distinct company_size from aug_train_data;
+
+Update aug_train_data
+set relevent_experience = 'Yes'
+where relevent_experience = 'Has relevent experience';
+
+Update aug_train_data
+set relevent_experience = 'No'
+where relevent_experience = 'No relevent experience';
+
+Update aug_train_data
+set experience = 21
+where experience = '>20';
+
+Update aug_train_data
+set experience = 0
+where experience = '<1';
+
+-- For Company size Column
+select * from aug_train_data;
+select distinct company_size from aug_train_data;
+
+Update aug_train_data
+set company_size = '10-49'
+where company_size = 'Oct-49';
+
+-- For last_new_job Column
+select * from aug_train_data;
+select distinct last_new_job from aug_train_data;
+
+Update aug_train_data
+set last_new_job = 5
+where last_new_job = '>4';
+
+Update aug_train_data
+set last_new_job = 0
+where last_new_job = 'never';
+
+-- Missing values fill
+-- For aug_train_data
+select * from aug_train_data;
+select count(*) from aug_train_data where target is null;
+select distinct target from aug_train_data;
+
+Update aug_train_data
+set gender = 'Unknown'
+where gender = '';
+
+update aug_train_data
+set enrolled_university = 'Unknown'
+where enrolled_university = '';
+
+Update aug_train_data
+set education_level = 'Unknown'
+where education_level = '';
+
+Update aug_train_data
+set major_discipline = 'Unknown'
+where major_discipline = '';
+
+Update aug_train_data
+set experience = null
+where experience = '';
+
+Update aug_train_data
+set	company_size = 'Unknown'
+where company_size = '';
+
+Update aug_train_data
+set company_type = 'Unknown'
+where company_type = '';
+
+Update aug_train_data
+set last_new_job = 'Unknown'
+where last_new_job = '';
+
+-- Adding custome column
+-- aug_train_data
+-- 1. Experience_group column
+Alter table aug_train_data
+Add column Experience_group varchar(20);
+
+Update aug_train_data
+set Experience_group =
+CASE
+When Experience <5 then 'Junior'
+When Experience between 5 and 10 then 'Mid'
+else 'Senior'
+End;
+
+-- 2. Training_hours_level
+Alter table aug_train_data
+Add column Training_hours_level varchar(20);
+
+Update aug_train_data
+set Training_hours_level =
+Case
+When training_hours <100 then 'Low'
+When training_hours between 100 and 200 then 'Medium'
+else 'High'
+End;
+
+-- 3. city_development_level column
+Alter table aug_train_data
+add column city_development_level varchar(40);
+
+Update aug_train_data
+set city_development_level =
+Case
+When city_development_index <0.5 then 'Low development'
+When city_development_index between 0.5 and 0.7 then 'Moderately developed city'
+else 'Highly developed city'
+end;
