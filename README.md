@@ -16,7 +16,7 @@ The dashboard explores patterns in experience level, city development, company s
 - Employees in smaller companies demonstrate higher job switching behavior.
 
 ## Dashboard Preview
-![Dashboard](images/dashboard_overview.png)
+![Dashboard](Dashboard.png)
 
 ## Features
 - Interactive filters (Gender, Education_level, Company Type, Experience group)
